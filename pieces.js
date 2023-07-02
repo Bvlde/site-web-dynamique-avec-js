@@ -39,6 +39,7 @@ for(let i=0 ; i<5 ; i++){
     pieceElement.appendChild(stockElement);
 }
 
+//button pour trier les prix par ordre croissant
    const buttonTrier = document.querySelector(".btn-trier");
     buttonTrier.addEventListener("click", function (){
         const copyTablePiece = Array.from(tabPieces); //on fais une copie de de tabPieces pour ne rien melanger;
@@ -49,8 +50,8 @@ for(let i=0 ; i<5 ; i++){
         console.log(copyTablePiece);
     });
 
+    //button pour filtrer les prix abordables
     const buttonFiltre = document.querySelector(".btn-filtre");
-
     buttonFiltre.addEventListener("click",function (){
 
         const pieceFiltrees = tabPieces.filter(function(piece){
@@ -59,6 +60,7 @@ for(let i=0 ; i<5 ; i++){
         console.log(pieceFiltrees);
     });
 
+    //button pour trier les prix par ordre decroissant
     const buttonTrieDecroissant = document.querySelector(".btn-decroissant");
     buttonTrieDecroissant.addEventListener("click", ()=>{
         const copieTablePiece = Array.from(tabPieces);
@@ -69,6 +71,7 @@ for(let i=0 ; i<5 ; i++){
         console.log(copieTablePiece);
     });
 
+    //filtrer(enlever) les pieces sans description
     const buttonFiltreDescription = document.querySelector(".btn-sans-description");
     buttonFiltreDescription.addEventListener("click", ()=> {
 
@@ -77,3 +80,46 @@ for(let i=0 ; i<5 ; i++){
         });
         console.log(pieceAvecDescription);
     });
+
+
+    //Affichage d'une liste des prix abordables
+    const tabNom = tabPieces.map(pieces => pieces.nom);//fonction lambda
+
+    for(let i = tabPieces.length-1; i>=0; i--){
+        if(tabPieces[i].prix > 35){
+            tabNom.splice(i,1);  
+        }
+    }
+    
+    //creation de la liste ul
+    const ul = document.createElement("ul");
+    for(let piece of tabNom){
+        const li = document.createElement("li");
+        li.innerText = piece;
+        ul.appendChild(li);
+    }
+    document.querySelector(".Abordable").appendChild(ul);
+
+   
+
+
+    const tabPrixDisponible = tabPieces.map(piece => piece.prix);//recup tout les prix
+    const tabNomDisponible = tabPieces.map(piece => piece.nom);//recup les noms
+
+    for(let i = tabPieces.length-1; i>=0; i--){
+        if(tabPieces[i].disponibilite === false){
+            tabPrixDisponible.splice(i,1);
+            tabNomDisponible.splice(i,1);
+        }
+    }
+    console.log(tabPrixDisponible)
+   
+   
+    const ull = document.createElement("ul")
+   
+    for(let i=0; i<tabNomDisponible.length;i++){
+        const li = document.createElement("li");
+        li.innerText = `${tabNomDisponible[i]} -- ${tabPrixDisponible[i]} £`;
+        ull.appendChild(li);
+    }
+    document.querySelector(".p-disponible").appendChild(ull);
