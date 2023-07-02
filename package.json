@@ -1,7 +1,7 @@
 {
-  "name": "7697016-front-end.1",
+  "name": "front-end",
   "version": "1.0.0",
-  "description": "Support de Code pour le cours OpenClassrooms Creez des pages web dynamiques avec javascript",
+  "description": "j'ai suivie le cours de OpenClassrooms pour la création des pages web dynamiques avec javascript afin de pouvoir realiser se projet",
   "main": "pieces.js",
   "scripts": {
     "start":"http-server",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/OpenClassrooms-Student-Center/7697016-Front-End.1.git"
+    "url": "git+https://github.com/Bvlde/site-web-dynamique-avec-js"
   },
-  "author": "OpenClassrooms",
+  "author": "bvlde",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/OpenClassrooms-Student-Center/7697016-Front-End.1/issues"
+    "url": "git+https://github.com/Bvlde/site-web-dynamique-avec-js"
   },
-  "homepage": "https://github.com/OpenClassrooms-Student-Center/7697016-Front-End.1#readme",
+  "homepage": "git+https://github.com/Bvlde/site-web-dynamique-avec-js",
   "dependencies": {
     "http-server": "^14.1.1"
   }
