@@ -1,4 +1,7 @@
-const reponse = await fetch("pieces-autos.json");
+import { ajoutListennersAvis } from "./avis.js";
+
+
+const reponse = await fetch("http://localhost:8081/pieces");
 const tabPieces = await reponse.json(); //extraire les element de json
 
 function genererPiece(listePiece){
@@ -25,6 +28,12 @@ for(let i=0 ; i<listePiece.length ; i++){
 
     const stockElement = document.createElement("p");
     stockElement.innerText = article.disponibilite ? "En stock" : "En rupture de stock";
+    
+    //creation du button avis client
+    const avisButton = document.createElement("button");
+    avisButton.dataset.id = article.id;
+    avisButton.textContent = "Afficher les avis" ;
+
 
     //on attaches la balise article a la section fiches
     const sectionFiches = document.querySelector(".fiches");
@@ -36,7 +45,9 @@ for(let i=0 ; i<listePiece.length ; i++){
     pieceElement.appendChild(prixElement);
     pieceElement.appendChild(categorieElement);
     pieceElement.appendChild(stockElement);
+    pieceElement.appendChild(avisButton);
     }
+    ajoutListennersAvis();
 }
 //appelle de la fonction
 genererPiece(tabPieces);
@@ -120,9 +131,6 @@ genererPiece(tabPieces);
         ul.appendChild(li);
     }
     document.querySelector(".Abordable").appendChild(ul);
-
-   
-
 
     const tabPrixDisponible = tabPieces.map(piece => piece.prix);//recup tout les prix
     const tabNomDisponible = tabPieces.map(piece => piece.nom);//recup les noms

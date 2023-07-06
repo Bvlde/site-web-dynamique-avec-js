@@ -14,7 +14,6 @@ header {
 	margin-bottom: 16px;
 	padding: 8px;
 	background-color: #7451eb;
-	text-align: center;
 	color: white;
 }
 header img {
@@ -22,6 +21,7 @@ header img {
 	margin-left: 1rem;
 }
 header h1 {
+	text-align: center;
 	flex-grow: 1;
 }
 
