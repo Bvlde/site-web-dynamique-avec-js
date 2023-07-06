@@ -1,8 +1,9 @@
-import { ajoutListennersAvis } from "./avis.js";
+import { ajoutListennersAvis , ajoutNouvelleAvis } from "./avis.js";
 
 
 const reponse = await fetch("http://localhost:8081/pieces");
 const tabPieces = await reponse.json(); //extraire les element de json
+ajoutNouvelleAvis();
 
 function genererPiece(listePiece){
     
@@ -47,7 +48,7 @@ for(let i=0 ; i<listePiece.length ; i++){
     pieceElement.appendChild(stockElement);
     pieceElement.appendChild(avisButton);
     }
-    ajoutListennersAvis();
+    ajoutListennersAvis();//s'execute seulement qd on clique sur btn avis
 }
 //appelle de la fonction
 genererPiece(tabPieces);
